@@ -1,65 +1,80 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useOnboardingStore } from '@/store/use-onboarding-store';
+import { OnboardingLayout } from '@/components/layout/onboarding-layout';
+
+import { Step1Welcome } from '@/components/onboarding/step-1-welcome';
+import { Step2Routine } from '@/components/onboarding/step-2-routine';
+import { Step3Bifurcation } from '@/components/onboarding/step-3-bifurcation';
+import { Step4Placement } from '@/components/onboarding/step-4-placement';
+import { Step5LiveBooking } from '@/components/onboarding/step-5-live-booking';
+import { Step6Finalizing } from '@/components/onboarding/step-6-finalizing';
+import { Step7Celebration } from '@/components/onboarding/step-7-celebration';
+
+const variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 80 : -80,
+    opacity: 0,
+    scale: 0.98,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+    scale: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 80 : -80,
+    opacity: 0,
+    scale: 0.98,
+  }),
+};
+
+export default function OnboardingPage() {
+  const { currentStep } = useOnboardingStore();
+  const [prevStep, setPrevStep] = useState(currentStep);
+  const direction = currentStep > prevStep ? 1 : -1;
+
+  useEffect(() => {
+    setPrevStep(currentStep);
+  }, [currentStep]);
+
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1: return <Step1Welcome key="step1" />;
+      case 2: return <Step2Routine key="step2" />;
+      case 3: return <Step3Bifurcation key="step3" />;
+      case 4: return <Step4Placement key="step4" />;
+      case 5: return <Step5LiveBooking key="step5" />;
+      case 6: return <Step6Finalizing key="step6" />;
+      case 7: return <Step7Celebration key="step7" />;
+      default: return <Step1Welcome key="fallback" />;
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <OnboardingLayout>
+      <AnimatePresence mode="wait" custom={direction} initial={false}>
+        <motion.div
+          key={currentStep}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "tween", ease: [0.25, 0.1, 0.25, 1], duration: 0.35 },
+            opacity: { duration: 0.25, ease: "easeOut" },
+            scale: { duration: 0.35, ease: "easeOut" },
+          }}
+          className="w-full"
+        >
+          {renderStep()}
+        </motion.div>
+      </AnimatePresence>
+    </OnboardingLayout>
   );
 }
