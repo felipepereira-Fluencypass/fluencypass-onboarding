@@ -38,16 +38,16 @@ export function Step1Welcome() {
   }, [setVideoWatched]);
 
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto gap-8 animate-fade-in-up py-4 lg:py-8">
+    <div className="flex flex-col w-full max-w-4xl mx-auto gap-6 lg:gap-8 animate-fade-in-up py-4 lg:py-8">
       {/* Header */}
       <div className="space-y-3 text-center lg:text-left">
         <p className="text-primary font-semibold text-xl lg:text-2xl">
           Olá, {userName}! 👋
         </p>
-        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight">
+        <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground leading-tight">
           Sua jornada rumo à fluência começa agora.
         </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+        <p className="text-muted-foreground text-base lg:text-lg leading-relaxed max-w-2xl">
           Assista ao vídeo de boas-vindas para descobrir como a Fluencypass vai acelerar seus resultados.
         </p>
       </div>

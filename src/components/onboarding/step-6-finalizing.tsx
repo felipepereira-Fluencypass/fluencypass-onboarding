@@ -85,7 +85,7 @@ export function Step6Finalizing() {
   }, [steps.length]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-full min-h-[60vh] text-center gap-8 animate-fade-in-up">
+    <div className="flex flex-col items-center justify-center w-full min-h-[50vh] lg:min-h-[60vh] text-center gap-6 lg:gap-8 animate-fade-in-up">
       <div
         className="theme-brand text-primary transition-opacity duration-200"
         style={{ opacity: textVisible ? 1 : 0 }}

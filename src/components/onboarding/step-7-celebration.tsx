@@ -55,18 +55,14 @@ export function Step7Celebration() {
     });
   };
 
-  const handleAccessPlatform = () => {
-    window.location.href = '/dashboard';
-  };
-
   return (
-    <div className="flex flex-col items-center w-full max-w-2xl mx-auto gap-8 text-center animate-fade-in-up py-8 lg:py-12">
+    <div className="flex flex-col items-center w-full max-w-2xl mx-auto gap-6 lg:gap-8 text-center animate-fade-in-up py-4 lg:py-12 pb-20">
       {/* Trophy */}
       <div className="text-6xl animate-bounce">🏆</div>
 
       {/* Headline */}
       <div className="space-y-3">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
           Você está pronta, {userName}!
         </h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
@@ -131,12 +127,12 @@ export function Step7Celebration() {
         </div>
       )}
 
-      {/* CTA */}
-      <div className="theme-brand w-full mt-4">
+      {/* CTA — desktop only (inline) */}
+      <div className="hidden lg:block w-full theme-brand">
         <Button
           size="lg"
           className="w-full"
-          onClick={handleAccessPlatform}
+          onClick={() => { window.location.href = '/dashboard'; }}
         >
           Acessar minha plataforma
         </Button>

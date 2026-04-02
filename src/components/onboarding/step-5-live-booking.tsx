@@ -63,12 +63,12 @@ export function Step5LiveBooking() {
 
   if (viewState === 'recorded') {
     return (
-      <div className="flex flex-col w-full max-w-3xl mx-auto gap-8 animate-fade-in-up py-4 lg:py-8">
+      <div className="flex flex-col w-full max-w-3xl mx-auto gap-6 lg:gap-8 animate-fade-in-up py-4 lg:py-8">
         <div className="space-y-3 text-center lg:text-left">
-          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+          <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground">
             Mentoria gravada
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base lg:text-lg">
             Assista no seu próprio ritmo — o conteúdo é o mesmo da sessão ao vivo.
           </p>
         </div>
@@ -86,15 +86,15 @@ export function Step5LiveBooking() {
 
   if (viewState === 'confirmed') {
     return (
-      <div className="flex flex-col w-full max-w-lg mx-auto gap-8 animate-fade-in-up items-center text-center py-4 lg:py-8">
+      <div className="flex flex-col w-full max-w-lg mx-auto gap-6 lg:gap-8 animate-fade-in-up items-center text-center py-4 lg:py-8">
         <div className="theme-positive text-primary animate-scale-in">
           <CycleIcon icon={CircleCheck} size="lg" decorative />
         </div>
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground">
+          <h2 className="text-2xl lg:text-3xl font-bold tracking-tight text-foreground">
             Agendado com sucesso
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-base lg:text-lg">
             A mentoria foi adicionada a sua agenda.
           </p>
         </div>
@@ -119,12 +119,12 @@ export function Step5LiveBooking() {
   }
 
   return (
-    <div className="flex flex-col w-full max-w-2xl mx-auto gap-8 animate-fade-in-up py-4 lg:py-8">
+    <div className="flex flex-col w-full max-w-2xl mx-auto gap-6 lg:gap-8 animate-fade-in-up py-4 lg:py-8">
       <div className="space-y-3 text-center lg:text-left">
-        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+        <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground">
           Sua mentoria de boas-vindas
         </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">
+        <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
           Alunos que participam da mentoria tendem a evoluir mais rápido e com mais confiança. Escolha um horário e adicionaremos à sua agenda.
         </p>
       </div>

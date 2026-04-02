@@ -15,7 +15,7 @@ import { Step7Celebration } from '@/components/onboarding/step-7-celebration';
 
 const variants = {
   enter: (direction: number) => ({
-    x: direction > 0 ? 80 : -80,
+    x: direction > 0 ? 40 : -40,
     opacity: 0,
     scale: 0.98,
   }),
@@ -27,7 +27,7 @@ const variants = {
   },
   exit: (direction: number) => ({
     zIndex: 0,
-    x: direction < 0 ? 80 : -80,
+    x: direction < 0 ? 40 : -40,
     opacity: 0,
     scale: 0.98,
   }),

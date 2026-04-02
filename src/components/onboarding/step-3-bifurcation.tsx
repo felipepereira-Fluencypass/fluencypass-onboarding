@@ -10,13 +10,13 @@ export function Step3Bifurcation() {
   const { placementStrategy, setPlacementStrategy } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col w-full max-w-2xl mx-auto gap-8 animate-fade-in-up py-4 lg:py-8">
+    <div className="flex flex-col w-full max-w-2xl mx-auto gap-6 lg:gap-8 animate-fade-in-up py-4 lg:py-8">
       {/* Header */}
       <div className="space-y-3 text-center lg:text-left">
-        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+        <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground">
           Sua trilha, suas regras
         </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">
+        <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
           Escolha como quer começar para recomendarmos o melhor caminho para você.
         </p>
       </div>

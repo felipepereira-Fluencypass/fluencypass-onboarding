@@ -104,13 +104,18 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
         className={cn(
           "flex flex-col rounded-2xl border-2 transition-all h-full",
           isCompleted
-            ? "theme-positive border-primary bg-primary/[0.04] p-6"
-            : "border-border bg-card p-6"
+            ? "theme-positive border-primary bg-primary/[0.04] p-4 lg:p-6"
+            : "border-border bg-card p-4 lg:p-6"
         )}
       >
-        {/* Header */}
-        <div className="flex items-start justify-between mb-5">
-          <div className="flex items-start gap-3">
+        {/* Header — mobile: icon above title | desktop: icon + title inline */}
+        <div className="flex items-start justify-between mb-3 lg:mb-5">
+          {/* Mobile layout */}
+          <div className={cn("p-2 rounded-xl bg-primary/10 text-primary lg:hidden", !isCompleted && "theme-brand")}>
+            {icon}
+          </div>
+          {/* Desktop layout */}
+          <div className="hidden lg:flex items-start gap-3">
             <div className={cn("p-2 rounded-xl bg-primary/10 text-primary", !isCompleted && "theme-brand")}>
               {icon}
             </div>
@@ -125,6 +130,11 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
             <Badge variant="muted" size="sm" className="shrink-0">{duration}</Badge>
           )}
         </div>
+        {/* Mobile title/subtitle below icon */}
+        <div className="space-y-0.5 mb-4 lg:hidden">
+          <h3 className="font-bold text-lg text-foreground">{title}</h3>
+          <p className="text-sm font-medium text-muted-foreground">{subtitle}</p>
+        </div>
 
         {/* Before test */}
         {!isCompleted && (
@@ -132,7 +142,7 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
             <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
 
             {/* Skills */}
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {skills.map((skill) => (
                 <div key={skill} className="flex items-center gap-2 text-sm">
                   <span className="text-muted-foreground text-xs">●</span>
@@ -161,7 +171,7 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
           <div className="space-y-5 animate-fade-in-up">
             <div className="py-2">
               <p className="text-sm text-muted-foreground mb-1">Seu nível</p>
-              <p className="text-3xl font-bold text-primary">
+              <p className="text-2xl lg:text-3xl font-bold text-primary">
                 {getCefrLabel(level)} — {level}
               </p>
             </div>
@@ -274,13 +284,13 @@ export function Step4Placement() {
   const bothCompleted = theoreticalCompleted && practicalCompleted;
 
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto gap-8 animate-fade-in-up py-4 lg:py-8">
+    <div className="flex flex-col w-full max-w-4xl mx-auto gap-6 lg:gap-8 animate-fade-in-up py-4 lg:py-8">
       {/* Header */}
       <div className="space-y-3 text-center lg:text-left">
-        <h2 className="text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
+        <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground">
           Vamos descobrir seu nível
         </h2>
-        <p className="text-muted-foreground text-lg leading-relaxed">
+        <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
           Nosso curso segue o{' '}
           <TooltipProvider>
             <Tooltip>
@@ -333,7 +343,7 @@ export function Step4Placement() {
         <>
           <button
             onClick={() => setSkipDialogOpen(true)}
-            className="mx-auto text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline-offset-4 hover:underline"
+            className="mx-auto text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline underline-offset-4"
           >
             Prefiro fazer o nivelamento depois
           </button>
