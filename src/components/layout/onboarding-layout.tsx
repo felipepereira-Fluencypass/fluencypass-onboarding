@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Progress } from '@fluencypassdevs/cycle';
 import { FluencypassLogo } from '@fluencypassdevs/cycle';
 import { cn } from '@fluencypassdevs/cycle/lib/utils';
@@ -31,6 +31,11 @@ export function OnboardingLayout({ children }: OnboardingLayoutProps) {
   const hasPersonalData = !!birthDate && !!studyObjective;
   const totalSteps = hasPersonalData ? 7 : 8;
   const progressValue = (currentStep / totalSteps) * 100;
+
+  // Reseta scroll pro topo a cada mudança de step
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [currentStep]);
 
   const isNextDisabled = (): boolean => {
     switch (currentStep) {
@@ -107,7 +112,7 @@ export function OnboardingLayout({ children }: OnboardingLayoutProps) {
               <Button
                 size="lg"
                 className="w-full"
-                onClick={() => { window.location.href = '/dashboard'; }}
+                onClick={() => { window.location.href = 'https://fluencypass.com/account'; }}
               >
                 Começar agora
               </Button>

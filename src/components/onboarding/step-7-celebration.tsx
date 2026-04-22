@@ -131,7 +131,7 @@ export function Step7Celebration() {
         <Button
           size="lg"
           className="w-full"
-          onClick={() => { window.location.href = '/dashboard'; }}
+          onClick={() => { window.location.href = 'https://fluencypass.com/account'; }}
         >
           Começar agora
         </Button>

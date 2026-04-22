@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useOnboardingStore } from '@/store/use-onboarding-store';
-import { Button, VideoPlayer, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@fluencypassdevs/cycle';
+import { Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@fluencypassdevs/cycle';
 import { CycleIcon } from '@fluencypassdevs/cycle';
 import { Clock, Calendar, CircleCheck } from '@fluencypassdevs/cycle/icons/lucide';
 
@@ -45,7 +45,7 @@ export function Step5LiveBooking() {
   const handleWatchRecorded = () => {
     setMentoringMode('recorded');
     setLiveBookingDate('recorded');
-    window.open('https://pub-457a0052e8424c87924878ef99fd9914.r2.dev/onboarding/video.mp4', '_blank');
+    window.open('https://drive.google.com/file/d/1d-zNTdXt2VfbSkZrdXNTvHTem2NzUl30/view', '_blank');
     setSkipDialogOpen(false);
     nextStep();
   };
@@ -73,7 +73,13 @@ export function Step5LiveBooking() {
           </p>
         </div>
         <div className="w-full aspect-video rounded-2xl overflow-hidden ring-1 ring-border">
-          <VideoPlayer src="https://pub-457a0052e8424c87924878ef99fd9914.r2.dev/onboarding/video.mp4" />
+          <iframe
+            src="https://drive.google.com/file/d/1d-zNTdXt2VfbSkZrdXNTvHTem2NzUl30/preview"
+            className="w-full h-full"
+            allow="autoplay"
+            allowFullScreen
+            title="Live gravada"
+          />
         </div>
         <div className="theme-brand w-full">
           <Button size="lg" className="w-full" onClick={handleContinue}>

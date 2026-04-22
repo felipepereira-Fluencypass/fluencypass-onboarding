@@ -94,14 +94,14 @@ export function Step6Finalizing() {
       </div>
 
       <div className="space-y-3 min-h-[80px] flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-          Ajustando a plataforma pra você
-        </h2>
-        <p
-          className="text-muted-foreground text-base max-w-sm mx-auto transition-opacity duration-200"
+        <h2
+          className="text-2xl font-semibold tracking-tight text-foreground transition-opacity duration-200"
           style={{ opacity: textVisible ? 1 : 0 }}
         >
           {steps[currentStepIndex].text}
+        </h2>
+        <p className="text-muted-foreground text-base max-w-sm mx-auto">
+          Ajustando a plataforma pra você
         </p>
       </div>
 
