@@ -6,6 +6,7 @@ import { useOnboardingStore } from '@/store/use-onboarding-store';
 import { OnboardingLayout } from '@/components/layout/onboarding-layout';
 
 import { Step1Welcome } from '@/components/onboarding/step-1-welcome';
+import { StepPersonalData } from '@/components/onboarding/step-personal-data';
 import { Step2Routine } from '@/components/onboarding/step-2-routine';
 import { Step3Bifurcation } from '@/components/onboarding/step-3-bifurcation';
 import { Step4Placement } from '@/components/onboarding/step-4-placement';
@@ -45,12 +46,13 @@ export default function OnboardingPage() {
   const renderStep = () => {
     switch (currentStep) {
       case 1: return <Step1Welcome key="step1" />;
-      case 2: return <Step2Routine key="step2" />;
+      case 2: return <StepPersonalData key="step2" />;
       case 3: return <Step3Bifurcation key="step3" />;
       case 4: return <Step4Placement key="step4" />;
-      case 5: return <Step5LiveBooking key="step5" />;
-      case 6: return <Step6Finalizing key="step6" />;
-      case 7: return <Step7Celebration key="step7" />;
+      case 5: return <Step2Routine key="step5" />;
+      case 6: return <Step5LiveBooking key="step6" />;
+      case 7: return <Step6Finalizing key="step7" />;
+      case 8: return <Step7Celebration key="step8" />;
       default: return <Step1Welcome key="fallback" />;
     }
   };

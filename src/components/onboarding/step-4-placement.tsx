@@ -108,7 +108,7 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
             : "border-border bg-card p-4 lg:p-6"
         )}
       >
-        {/* Header — mobile: icon above title | desktop: icon + title inline */}
+        {/* Header: mobile icon above title, desktop icon + title inline */}
         <div className="flex items-start justify-between mb-3 lg:mb-5">
           {/* Mobile layout */}
           <div className={cn("p-2 rounded-xl bg-primary/10 text-primary lg:hidden", !isCompleted && "theme-brand")}>
@@ -166,13 +166,13 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
           </div>
         )}
 
-        {/* After test — CEFR feedback */}
+        {/* After test: CEFR feedback */}
         {isCompleted && level && (
           <div className="space-y-5 animate-fade-in-up">
             <div className="py-2">
               <p className="text-sm text-muted-foreground mb-1">Seu nível</p>
               <p className="text-2xl lg:text-3xl font-bold text-primary">
-                {getCefrLabel(level)} — {level}
+                {level} ({getCefrLabel(level)})
               </p>
             </div>
 
@@ -236,7 +236,7 @@ function TestCard({ title, subtitle, description, impactLabel, impactDescription
                 <span className="theme-brand text-primary font-bold text-lg">3</span>
                 <div>
                   <p className="font-medium text-foreground">Fale naturalmente</p>
-                  <p className="text-sm text-muted-foreground">Não se preocupe com erros — o objetivo é avaliar seu nível atual.</p>
+                  <p className="text-sm text-muted-foreground">Pode errar à vontade. Não é prova, é só pra entender onde você está.</p>
                 </div>
               </div>
             </div>
@@ -288,10 +288,10 @@ export function Step4Placement() {
       {/* Header */}
       <div className="space-y-3 text-center lg:text-left">
         <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground">
-          Vamos descobrir seu nível
+          Dois testes pra descobrir seu nível.
         </h2>
         <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
-          Nosso curso segue o{' '}
+          Vamos fazer dois testes rápidos pra entender o que você já sabe. Assim o curso começa no ponto certo, sem repetir o que já é óbvio e sem pular o que ainda trava. Usamos o{' '}
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -302,7 +302,7 @@ export function Step4Placement() {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          , o padrão internacional de fluência. O nivelamento define em qual módulo você começa, assim você pula o que já sabe e foca no que realmente importa.
+          {' '}como referência.
         </p>
       </div>
 
@@ -310,10 +310,10 @@ export function Step4Placement() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <TestCard
           title="Nivelamento Teórico"
-          subtitle="Conhecimento gramatical"
-          description="Avalia sua compreensão de gramática, vocabulário, leitura e escrita. Mesmo quem consome muito conteúdo em inglês pode ter lacunas aqui."
+          subtitle="Leitura, gramática e escrita"
+          description="Quando você lê um email em inglês, entende tudo ou fica na dúvida? Este teste mostra."
           impactLabel="Impacto no seu curso"
-          impactDescription="Define o nível das suas videoaulas e exercícios (Class)."
+          impactDescription="Ajusta as videoaulas (Class) pro seu nível."
           skills={['Gramática', 'Vocabulário', 'Leitura', 'Escrita']}
           duration="~10-15 min"
           isCompleted={theoreticalCompleted}
@@ -324,10 +324,10 @@ export function Step4Placement() {
 
         <TestCard
           title="Nivelamento Prático"
-          subtitle="Habilidade de conversação"
-          description="Avalia sua pronúncia, ritmo de fala e entonação com IA (ELSA Speak). É comum ter um nível prático diferente do teórico — isso é perfeitamente normal."
+          subtitle="Fala e pronúncia"
+          description="Numa reunião, travar pra achar a palavra certa? Aqui a gente vê como você se vira falando. Usamos a IA do ELSA Speak pra avaliar."
           impactLabel="Impacto no seu curso"
-          impactDescription="Define o nível das suas conversações (GroupTalk e PrivateTalk)."
+          impactDescription="Ajusta suas aulas de conversação (GroupTalk e PrivateTalk)."
           skills={['Pronúncia', 'Ritmo de fala', 'Escuta ativa', 'Entonação']}
           duration="~5-10 min"
           isCompleted={practicalCompleted}
@@ -345,7 +345,7 @@ export function Step4Placement() {
             onClick={() => setSkipDialogOpen(true)}
             className="mx-auto text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer underline underline-offset-4"
           >
-            Prefiro fazer o nivelamento depois
+            Fazer os testes depois
           </button>
 
           <Dialog open={skipDialogOpen} onOpenChange={setSkipDialogOpen}>
@@ -392,17 +392,6 @@ export function Step4Placement() {
       )}
 
 
-      {/* Completion */}
-      {bothCompleted && (
-        <div className="theme-positive text-center p-5 rounded-xl bg-primary/5 border border-primary/20 animate-fade-in-up">
-          <p className="font-semibold text-foreground">
-            Seus dois nivelamentos foram concluídos.
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            Clique em &quot;Continuar&quot; para seguir.
-          </p>
-        </div>
-      )}
     </div>
   );
 }

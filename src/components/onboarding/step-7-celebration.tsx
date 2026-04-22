@@ -63,17 +63,17 @@ export function Step7Celebration() {
       {/* Headline */}
       <div className="space-y-3">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground">
-          Você está pronta, {userName}!
+          Tudo pronto, {userName}.
         </h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
-          Sua plataforma foi personalizada e sua jornada rumo à fluência começa agora.
+          A Fluencypass está configurada do seu jeito: seu ritmo, seu nível e seu objetivo.
         </p>
       </div>
 
       {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
         <div className="bg-card border border-border p-4 rounded-xl text-left">
-          <p className="text-xs text-muted-foreground mb-1">Rotina de estudo</p>
+          <p className="text-xs text-muted-foreground mb-1">Seus horários</p>
           <p className="font-semibold text-foreground">{daysLabel}</p>
           <p className="text-sm text-muted-foreground">
             {studyTimeMinutes} min/dia{preferredStudyTime ? ` às ${preferredStudyTime}` : ''}
@@ -82,22 +82,22 @@ export function Step7Celebration() {
 
         {theoreticalLevel && (
           <div className="bg-card border border-border p-4 rounded-xl text-left">
-            <p className="text-xs text-muted-foreground mb-1">Nível teórico</p>
+            <p className="text-xs text-muted-foreground mb-1">Leitura e gramática</p>
             <p className="font-semibold text-foreground">{theoreticalLevel}</p>
-            <Badge variant="secondary" className="mt-1 text-xs">Videoaulas calibradas</Badge>
+            <Badge variant="secondary" className="mt-1 text-xs">Videoaulas prontas</Badge>
           </div>
         )}
 
         {practicalLevel && (
           <div className="bg-card border border-border p-4 rounded-xl text-left">
-            <p className="text-xs text-muted-foreground mb-1">Nível de conversação</p>
+            <p className="text-xs text-muted-foreground mb-1">Fala e pronúncia</p>
             <p className="font-semibold text-foreground">{practicalLevel}</p>
-            <Badge variant="secondary" className="mt-1 text-xs">GroupTalk e PrivateTalk calibrados</Badge>
+            <Badge variant="secondary" className="mt-1 text-xs">GroupTalk e PrivateTalk prontos</Badge>
           </div>
         )}
 
         <div className="bg-card border border-border p-4 rounded-xl text-left">
-          <p className="text-xs text-muted-foreground mb-1">Mentoria</p>
+          <p className="text-xs text-muted-foreground mb-1">Live de boas-vindas</p>
           <p className="font-semibold text-foreground">
             {mentoringMode === 'live' ? 'Agendada' : 'Assistida (gravação)'}
           </p>
@@ -120,21 +120,21 @@ export function Step7Celebration() {
               <p className="font-semibold text-foreground">{campaignBonus.title}</p>
               <p className="text-sm text-muted-foreground">{campaignBonus.description}</p>
               <p className="text-sm text-muted-foreground mt-2">
-                Você pode conferir os detalhes em <span className="font-medium text-foreground">Minha assinatura</span>.
+                Os detalhes ficam em <span className="font-medium text-foreground">Minha assinatura</span>.
               </p>
             </div>
           </div>
         </div>
       )}
 
-      {/* CTA — desktop only (inline) */}
+      {/* CTA, desktop only (inline) */}
       <div className="hidden lg:block w-full theme-brand">
         <Button
           size="lg"
           className="w-full"
           onClick={() => { window.location.href = '/dashboard'; }}
         >
-          Acessar minha plataforma
+          Começar agora
         </Button>
       </div>
     </div>

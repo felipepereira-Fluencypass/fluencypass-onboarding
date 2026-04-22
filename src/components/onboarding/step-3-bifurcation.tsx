@@ -14,10 +14,10 @@ export function Step3Bifurcation() {
       {/* Header */}
       <div className="space-y-3 text-center lg:text-left">
         <h2 className="text-2xl lg:text-4xl font-bold tracking-tight text-foreground">
-          Sua trilha, suas regras
+          Você já teve contato com inglês antes?
         </h2>
         <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
-          Escolha como quer começar para recomendarmos o melhor caminho para você.
+          Sua resposta define onde o curso começa. Sem certo ou errado.
         </p>
       </div>
 
@@ -25,8 +25,8 @@ export function Step3Bifurcation() {
         <SelectableCard
           selected={placementStrategy === 'discover'}
           onSelect={() => setPlacementStrategy('discover')}
-          title="Já tenho algum conhecimento"
-          description="Quero descobrir meu nível atual para pular o que já sei e focar no que importa."
+          title="Já sei alguma coisa"
+          description="Quero fazer um teste rápido pra pular o que já sei."
           badge="Recomendado"
           icon={<CycleIcon icon={TrendingUp} size="sm" decorative />}
         />
@@ -34,8 +34,8 @@ export function Step3Bifurcation() {
         <SelectableCard
           selected={placementStrategy === 'skip'}
           onSelect={() => setPlacementStrategy('skip')}
-          title="Vou construir minha base do zero"
-          description="Nunca estudei inglês ou sei muito pouco. Quero dar meus primeiros passos com segurança."
+          title="Estou começando do zero"
+          description="Nunca estudei, ou estudei e esqueci. Quero começar do começo, sem atalho."
           icon={<CycleIcon icon={GraduationCap} size="sm" decorative />}
         />
       </div>

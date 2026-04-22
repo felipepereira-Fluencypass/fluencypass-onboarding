@@ -10,33 +10,52 @@ interface OnboardingLayoutProps {
   children: React.ReactNode;
 }
 
+function isValidBirthDate(value: string | null): boolean {
+  if (!value || !/^\d{2}\/\d{2}\/\d{4}$/.test(value)) return false;
+  const [d, m, y] = value.split('/').map(Number);
+  const now = new Date();
+  if (y < 1900 || y > now.getFullYear()) return false;
+  if (m < 1 || m > 12) return false;
+  const date = new Date(y, m - 1, d);
+  return date.getFullYear() === y && date.getMonth() === m - 1 && date.getDate() === d;
+}
+
 export function OnboardingLayout({ children }: OnboardingLayoutProps) {
   const {
     currentStep, prevStep, nextStep,
+    birthDate, studyObjective,
     studyDays, placementStrategy, liveBookingDate, mentoringMode,
     theoreticalCompleted, practicalCompleted, videoWatched,
   } = useOnboardingStore();
 
-  const progressValue = (currentStep / 7) * 100;
+  const hasPersonalData = !!birthDate && !!studyObjective;
+  const totalSteps = hasPersonalData ? 7 : 8;
+  const progressValue = (currentStep / totalSteps) * 100;
 
   const isNextDisabled = (): boolean => {
     switch (currentStep) {
-      case 2: return studyDays.length === 0;
+      case 1: return !videoWatched;
+      case 2: {
+        // O user só está aqui porque algum dado faltava. Exige ambos preenchidos para avançar.
+        if (!isValidBirthDate(birthDate)) return true;
+        if (studyObjective === null) return true;
+        return false;
+      }
       case 3: return placementStrategy === null;
       case 4: return placementStrategy === 'discover' && !(theoreticalCompleted && practicalCompleted);
-      case 5: return liveBookingDate === null && mentoringMode === null;
-      case 6: return true;
+      case 5: return studyDays.length === 0;
+      case 6: return liveBookingDate === null && mentoringMode === null;
       case 7: return true;
-      case 1: return !videoWatched;
+      case 8: return true;
       default: return false;
     }
   };
 
-  const showFooter = currentStep < 6;
+  const showFooter = currentStep < 7;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      {/* Top bar — clean progress */}
+      {/* Top bar: clean progress */}
       <header className="fixed top-0 w-full z-10 bg-background/80 backdrop-blur-md">
         <div className="theme-brand">
           <Progress value={progressValue} className="h-1 rounded-none" />
@@ -53,7 +72,7 @@ export function OnboardingLayout({ children }: OnboardingLayoutProps) {
         </div>
       </main>
 
-      {/* Footer — navigation (steps 1-5) */}
+      {/* Footer: navigation (steps 1-6) */}
       {showFooter && (
         <footer className="fixed bottom-0 w-full bg-background/95 backdrop-blur-md border-t border-border p-4 z-10">
           <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
@@ -80,8 +99,8 @@ export function OnboardingLayout({ children }: OnboardingLayoutProps) {
         </footer>
       )}
 
-      {/* Footer — Step 7 CTA (mobile only, fixed) */}
-      {currentStep === 7 && (
+      {/* Footer: Step 8 Celebration CTA (mobile only, fixed) */}
+      {currentStep === 8 && (
         <footer className="fixed bottom-0 w-full bg-background/95 backdrop-blur-md border-t border-border p-4 z-10 lg:hidden">
           <div className="max-w-5xl mx-auto">
             <div className="theme-brand">
@@ -90,7 +109,7 @@ export function OnboardingLayout({ children }: OnboardingLayoutProps) {
                 className="w-full"
                 onClick={() => { window.location.href = '/dashboard'; }}
               >
-                Acessar minha plataforma
+                Começar agora
               </Button>
             </div>
           </div>

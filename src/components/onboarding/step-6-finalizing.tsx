@@ -7,15 +7,15 @@ import { CalendarDays, BarChart3, GraduationCap, Sparkles } from '@fluencypassde
 
 function buildSteps(theoreticalLevel: string | null, practicalLevel: string | null) {
   const steps = [
-    { text: 'Configurando sua rotina de estudos...', icon: CalendarDays },
+    { text: 'Salvando seus horários...', icon: CalendarDays },
   ];
 
   if (theoreticalLevel && practicalLevel) {
-    steps.push({ text: 'Calibrando seu nível no CEFR...', icon: BarChart3 });
+    steps.push({ text: 'Ajustando seu nível...', icon: BarChart3 });
   }
 
-  steps.push({ text: 'Preparando suas aulas e sessões de conversação...', icon: GraduationCap });
-  steps.push({ text: 'Finalizando os últimos detalhes...', icon: Sparkles });
+  steps.push({ text: 'Organizando aulas e conversações...', icon: GraduationCap });
+  steps.push({ text: 'Quase lá...', icon: Sparkles });
 
   return steps;
 }
@@ -95,7 +95,7 @@ export function Step6Finalizing() {
 
       <div className="space-y-3 min-h-[80px] flex flex-col items-center justify-center">
         <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-          Preparando tudo para você
+          Ajustando a plataforma pra você
         </h2>
         <p
           className="text-muted-foreground text-base max-w-sm mx-auto transition-opacity duration-200"
