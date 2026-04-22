@@ -41,7 +41,7 @@ export function StepPersonalData() {
           Queremos te conhecer melhor.
         </h2>
         <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
-          Essas respostas ajudam a gente a sugerir conteúdos que fazem mais sentido pra você.
+          Com o tempo, suas respostas ajudam a gente a trazer coisas relevantes pro seu momento e objetivo.
         </p>
       </div>
 
@@ -51,7 +51,6 @@ export function StepPersonalData() {
           <div className="rounded-2xl border border-border bg-card p-5 lg:p-7 space-y-4 lg:space-y-5">
             <div className="space-y-1">
               <h3 className="font-semibold text-base lg:text-lg text-foreground">Quando você nasceu?</h3>
-              <p className="text-sm text-muted-foreground">Usamos só pra adaptar referências (filmes, músicas, situações) à sua realidade.</p>
             </div>
             <div className="space-y-2">
               <Label htmlFor="birthDate" className="sr-only">Data de nascimento</Label>
@@ -75,7 +74,6 @@ export function StepPersonalData() {
           <div className="rounded-2xl border border-border bg-card p-5 lg:p-7 space-y-4 lg:space-y-5">
             <div className="space-y-1">
               <h3 className="font-semibold text-base lg:text-lg text-foreground">O que te trouxe aqui?</h3>
-              <p className="text-sm text-muted-foreground">Quanto mais a gente souber, mais os exemplos vão bater com o seu dia a dia.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {OBJECTIVES.map((opt) => (

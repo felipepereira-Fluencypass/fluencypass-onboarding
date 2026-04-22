@@ -23,6 +23,7 @@ export type FluencypassLevel = typeof FLUENCYPASS_LEVELS[number];
 
 interface OnboardingState {
   currentStep: OnboardingStep;
+  userName: string;
   birthDate: string | null;
   studyObjective: StudyObjective | null;
   studyDays: string[];
@@ -63,6 +64,7 @@ interface OnboardingState {
 
 export const useOnboardingStore = create<OnboardingState>((set) => ({
   currentStep: 1,
+  userName: 'Guilherme',
   birthDate: null,
   studyObjective: null,
   studyDays: [],

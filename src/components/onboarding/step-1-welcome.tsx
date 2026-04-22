@@ -5,8 +5,7 @@ import { VideoPlayer } from '@fluencypassdevs/cycle';
 import { useOnboardingStore } from '@/store/use-onboarding-store';
 
 export function Step1Welcome() {
-  const userName = "Marina";
-  const { setVideoWatched } = useOnboardingStore();
+  const { userName, setVideoWatched } = useOnboardingStore();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

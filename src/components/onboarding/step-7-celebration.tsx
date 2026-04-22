@@ -8,13 +8,12 @@ import { Gift } from '@fluencypassdevs/cycle/icons/lucide';
 
 export function Step7Celebration() {
   const {
+    userName,
     studyDays, studyTimeMinutes, preferredStudyTime,
     theoreticalLevel, practicalLevel,
     mentoringMode, liveBookingDate,
     campaignBonus,
   } = useOnboardingStore();
-
-  const userName = "Marina";
 
   useEffect(() => {
     const fire = () => {
